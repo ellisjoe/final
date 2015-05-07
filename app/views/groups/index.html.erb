@@ -1,0 +1,17 @@
+<h1>Groups</h1><%= link_to "Create Group", groups_new_url %>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+    <thead>
+
+    <% @groups.each do |group| %>
+        <tr>
+            <td><%= link_to group.name, groups_show_url(group.id) %></td>
+            <td><%= group.description %></td>
+        </tr>
+    <% end %>
+</table>

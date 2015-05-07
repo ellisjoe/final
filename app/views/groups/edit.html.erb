@@ -1,0 +1,5 @@
+<%= form_tag groups_update_url(@group.id), :method => 'patch' do %>
+    <label>Name</label><input name="name" type="text" value="<%= @group.name %>"></input><br>
+    <label>Description</label><input name="description" type="text" value="<%= @group.description %>"></input><br>
+    <button>Submit</button>
+<% end %>
