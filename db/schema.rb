@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 0) do
 
   create_table "comments", force: :cascade do |t|
+    t.integer  "group_member_id"
     t.datetime "time_posted"
     t.string   "content"
-    t.integer  "group_member_id"
   end
 
   add_index "comments", ["group_member_id"], name: "index_comments_on_group_member_id"
@@ -35,19 +35,19 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "pictures", force: :cascade do |t|
+    t.integer  "group_member_id"
     t.string   "caption"
     t.datetime "time_posted"
     t.string   "file_location"
-    t.integer  "group_member_id"
   end
 
   add_index "pictures", ["group_member_id"], name: "index_pictures_on_group_member_id"
 
   create_table "posts", force: :cascade do |t|
+    t.integer  "group_member_id"
     t.string   "title"
     t.datetime "time_posted"
     t.string   "content"
-    t.integer  "group_member_id"
   end
 
   add_index "posts", ["group_member_id"], name: "index_posts_on_group_member_id"
