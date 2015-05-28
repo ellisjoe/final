@@ -39,10 +39,7 @@ User
     first_name: string
     last_name: string
     email: string
-    password: string
-
-Session
-    user_id
+    password_digest: string
 
 Group
     name: string
@@ -51,6 +48,7 @@ Group
 GroupMember
     group_id
     user_id
+    admin: boolean
 
 Picture
     group_member_id

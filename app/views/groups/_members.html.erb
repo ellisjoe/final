@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+        </tr>
+    <thead>
+
+    <% @group.users.each do |group| %>
+        <tr>
+            <td><%= group.last_name %></td>
+            <td><%= group.first_name %></td>
+            <td><%= group.email %></td>
+        </tr>
+    <% end %>
+</table>
+

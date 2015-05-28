@@ -1,10 +1,14 @@
-<h1>Groups</h1><%= link_to "Create Group", groups_new_url %>
+<h1>Your Groups
 
-<table class="table table-striped">
+<%= link_to "Create Group", groups_new_url, :class => 'btn btn-primary pull-right' %>
+</h1>
+
+<% if @groups.count != 0 %>
+<table class="table">
     <thead>
         <tr>
-            <td>Name</td>
-            <td>Description</td>
+            <th>Name</th>
+            <th>Description</th>
         </tr>
     <thead>
 
@@ -15,3 +19,6 @@
         </tr>
     <% end %>
 </table>
+<% else %>
+    <p>You are not a member of any groups.</p>
+<% end %>

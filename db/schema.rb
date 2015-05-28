@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "group_members", force: :cascade do |t|
     t.integer "group_id"
     t.integer "user_id"
+    t.boolean "admin",    default: false
   end
 
   add_index "group_members", ["group_id"], name: "index_group_members_on_group_id"
@@ -55,6 +56,8 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
   end
 
 end

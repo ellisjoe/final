@@ -13,12 +13,47 @@ Picture.delete_all
 Post.delete_all
 User.delete_all
 
-joe  = User.create({ first_name: 'Joe', last_name: 'Ellis' })
-matt = User.create({ first_name: 'Matt', last_name: 'Ellis' })
+joe  = User.create({
+    first_name: 'Joe',
+    last_name:  'Ellis',
+    password:   'joe',
+    email:      'joe@gmail.com'
+})
+matt = User.create({
+    first_name: 'Matt',
+    last_name:  'Ellis',
+    password:   'matt',
+    email:      'matt@gmail.com'
+})
 
-family = Group.create({ name: "Ellis Family", description: "Group for the Ellis's to talk." })
+family = Group.create({
+    name: "Ellis Family",
+    description: "Group for the Ellis's to talk.",
+})
+
+joe_group = Group.create({
+    name: "Joe's Group",
+    description: "Group just for Joe.",
+})
+
+matt_group = Group.create({
+    name: "Matt's Group",
+    description: "Group just for Matt.",
+})
+
+other_group = Group.create({
+    name: "Joe's Admin",
+    description: "Group with Joe as admin.",
+})
 
 GroupMember.create([
-    { group_id: family.id, user_id: joe.id }, 
-    { group_id: family.id, user_id: matt.id }
+    { group_id: family.id, user_id: joe.id, admin: true }, 
+    { group_id: family.id, user_id: matt.id, admin: true },
+
+    { group_id: joe_group.id, user_id: joe.id, admin: true },
+
+    { group_id: matt_group.id, user_id: matt.id, admin: true },
+
+    { group_id: other_group.id, user_id: joe.id, admin: true },
+    { group_id: other_group.id, user_id: matt.id, admin: false },
 ])
