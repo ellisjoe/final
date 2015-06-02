@@ -42,13 +42,15 @@ class GroupsController < ApplicationController
     end
 
     def index
-        @groups = Group.joins(:users).where("users.id = ?", session[:user_id])
+        @groups = @user.groups.limit(100)
     end
 
     def show
         @admin = admin_status
-        @active_page = params[:page] ? params[:page] : "comments"
-        @pages = ["comments", "photos", "members", "info"]
+        @active_page = params[:page] ? params[:page] : "posts"
+        @pages = ["posts", "photos", "members", "info"]
+        @posts = @group.posts.order(time_posted: :desc).limit(100)
+        @photos = @group.photos.order(time_posted: :desc).limit(100)
     end
 
     def new

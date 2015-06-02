@@ -9,7 +9,7 @@
 Comment.delete_all
 Group.delete_all
 GroupMember.delete_all
-Picture.delete_all
+Photo.delete_all
 Post.delete_all
 User.delete_all
 
@@ -46,7 +46,7 @@ other_group = Group.create({
     description: "Group with Joe as admin.",
 })
 
-GroupMember.create([
+members = GroupMember.create([
     { group_id: family.id, user_id: joe.id, admin: true }, 
     { group_id: family.id, user_id: matt.id, admin: true },
 
@@ -57,3 +57,12 @@ GroupMember.create([
     { group_id: other_group.id, user_id: joe.id, admin: true },
     { group_id: other_group.id, user_id: matt.id, admin: false },
 ])
+
+members.each do |member|
+    Post.create({
+        group_member_id: member.id,
+        title: "Test post for #{member.user.first_name}",
+        time_posted: DateTime.now,
+        content: "Blah blah blah"
+    })
+end

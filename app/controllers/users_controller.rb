@@ -22,6 +22,12 @@ class UsersController < ApplicationController
         user.last_name = params[:last_name]
         user.email = params[:email]
         user.password = params[:password]
+
+        if user.invalid?
+            redirect_to users_new_url, notice: user.errors.messages
+            return
+        end
+
         user.save
         session[:user_id] = user.id
         redirect_to groups_index_url

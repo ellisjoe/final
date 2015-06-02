@@ -28,4 +28,14 @@ Rails.application.routes.draw do
     post '/sessions'   => 'sessions#create',  :as => "sessions_create"
     delete '/sessions' => 'sessions#destroy', :as => "sessions_destroy"
 
+    # Posts
+    post '/posts/:id' => 'posts#create', :as => "posts_create"
+
+    # Photos
+    post '/photos/:id' => 'photos#create', :as => "photos_create"
+    get  '/photos/:id' => 'photos#show',   :as => "photos_show"
+
+    # Comments
+    post '/comments/:id' => 'comments#create', :as => "comments_create"
+
 end

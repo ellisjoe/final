@@ -50,9 +50,8 @@ GroupMember
     user_id
     admin: boolean
 
-Picture
+Photo
     group_member_id
-    caption: string
     time_posted: datetime
     file_location: string
 
@@ -63,6 +62,7 @@ Post
     content: string
 
 Comment
-    group_member_id
+    user_id
+    photo_id
     time_posted: datetime
     content: string

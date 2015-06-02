@@ -1,0 +1,36 @@
+<div class="panel-body"></div>
+<%= form_tag posts_create_url(@group.id), :method => 'post', :class => 'form-horizontal' do %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">
+    <input type="text" class="form-control" name="title" placeholder="Title">
+      </h3>
+  </div>
+  <div class="panel-body">
+      <div style="margin-bottom: 15px">
+    <textarea class="form-control" rows="3" name="content" placeholder="Content"></textarea>
+      </div>
+      <div>
+    <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+  </div>
+</div>
+<% end %>
+
+<% @posts.each do |post| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">
+          <%= post.title %>
+          <small>
+              <div class="pull-right">
+                  <%= post.time_posted.to_formatted_s(:long) %>
+              </div>
+          </small>
+      </h3>
+  </div>
+  <div class="panel-body">
+      <%= post.content %>
+  </div>
+</div>
+<% end %>
