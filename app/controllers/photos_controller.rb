@@ -13,6 +13,11 @@ class PhotosController < ApplicationController
 
         uploaded_io = params[:picture]
 
+        if not uploaded_io
+            redirect_to groups_show_page_url(@group.id, "photos"), notice: "Must select photo to upload."
+            return
+        end
+
         # Pick a random filename
         filename = "#{SecureRandom.hex}.photo"
         filepath = Rails.root.join('public', 'uploads', filename)

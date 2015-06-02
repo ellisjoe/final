@@ -66,3 +66,16 @@ members.each do |member|
         content: "Blah blah blah"
     })
 end
+
+photo = Photo.create({
+    group_member_id: members[0].id,
+    time_posted: DateTime.now,
+    file_location: Rails.root.join('public', 'uploads', 'rubber-duck.jpg')
+})
+
+Comment.create({
+    user_id: joe.id,
+    photo_id: photo.id,
+    time_posted: DateTime.now,
+    content: "So cool!",
+})
