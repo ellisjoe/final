@@ -21,7 +21,7 @@
 <div>
 <% @photos.each do |photo| %>
 <!-- Button trigger modal -->
-<a data-toggle="modal" data-target="#image-modal-<%= photo.id %>">
+<a href="<%= groups_show_page_url(@group.id, "photos", :photo_id => photo.id) %>">
     <%= image_tag "/photos/#{photo.id}", :class => "img-thumbnail", :width => "140", :height => "140" %>
 </a>
 
@@ -43,19 +43,15 @@
       <div class="modal-body">
           <%= image_tag "/photos/#{photo.id}", :class => "img-responsive center-block" %>
           <hr sylte="margin-top: 0px; margin-bottom: 0px">
-      </div>
-      <div class="modal-body">
           <%= form_tag comments_create_url(photo.id), :class => 'form-inline' do %>
               <div class="input-group">
                   <input type=text" class="form-control" name="content" placeholder="Comment">
                   <span class="input-group-btn">
-                      <button type=submit class="btn btn-default">Post</button>
+                      <button type=submit class="btn btn-primary">Post</button>
                   </span>
               </div>
           <% end %>
           <hr sylte="margin-top: 0px; margin-bottom: 0px">
-      </div>
-      <div class="modal-body">
           <% photo.comments.order(time_posted: :desc).limit(100).each do |comment| %>
               <div class="panel panel-default">
                   <div class="panel-heading">
@@ -82,3 +78,8 @@
 </div>
 <% end %>
 <div>
+<% if @photo_id %>
+    <script>
+    $("#image-modal-<%= @photo_id %>").modal('show')
+    </script>
+<% end %>

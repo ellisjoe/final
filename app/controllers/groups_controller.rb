@@ -51,6 +51,7 @@ class GroupsController < ApplicationController
         @pages = ["posts", "photos", "members", "info"]
         @posts = @group.posts.order(time_posted: :desc).limit(100)
         @photos = @group.photos.order(time_posted: :desc).limit(100)
+        @photo_id = params[:photo_id]
     end
 
     def new

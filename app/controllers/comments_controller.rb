@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
         comment.time_posted = DateTime.now
         comment.save
 
-        redirect_to groups_show_page_url(photo.group, "photos")
+        redirect_to groups_show_page_url(photo.group, "photos", :photo_id => photo.id)
     end
 
 end
